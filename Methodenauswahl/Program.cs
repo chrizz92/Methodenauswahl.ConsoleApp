@@ -32,11 +32,70 @@ namespace Methodenauswahl
             number2 = temp;
         }
 
+        /// <summary>
+        /// Takes three integer-references and sorts them ascending
+        /// </summary>
+        /// <param name="number1"></param>
+        /// <param name="number2"></param>
+        /// <param name="number3"></param>
         public static void OrderNumbers(ref int number1, ref int number2, ref int number3)
         {
-
+            if (number1 > number3)
+            {
+                SwapNumbers(ref number1, ref number3);
+            }
+            if(number1 > number2)
+            {
+                SwapNumbers(ref number1, ref number2);
+            }
+            if(number2 > number3)
+            {
+                SwapNumbers(ref number2, ref number3);
+            }
         }
 
+        /// <summary>
+        /// Takes an integer-Array and creates two out-integers one with the highest and one with the smallest Value
+        /// </summary>
+        /// <param name="arrayToLookUp"></param>
+        /// <param name="highestValue"></param>
+        /// <param name="smallestValue"></param>
+        public static void CalcMinMax(int[] arrayToLookUp,out int highestValue, out int smallestValue)
+        {
+            highestValue = arrayToLookUp[0];
+            smallestValue = arrayToLookUp[0];
+
+            for (int i = 1; i < arrayToLookUp.Length; i++)
+            {
+                if (arrayToLookUp[i] > highestValue)
+                {
+                    highestValue = arrayToLookUp[i];
+                }
+                else if (arrayToLookUp[i] < smallestValue)
+                {
+                    smallestValue = arrayToLookUp[i];
+                }
+            }
+        }
+
+        public static long ReplaceLetters(string inputNumber)
+        {
+            long outputNumber = 0;
+
+            for (int i = 0; i < inputNumber.Length; i++)
+            {
+                if (inputNumber[i] >= '0' && inputNumber[i] <= '9')
+                {
+                    outputNumber += Convert.ToInt32(inputNumber[i].ToString());
+                }
+                else if((inputNumber[i] >= 'a' && inputNumber[i] <= 'z')||(inputNumber[i] >= 'A' && inputNumber[i] <= 'Z'))
+                {
+                    outputNumber *= 10;
+                }
+            }
+
+            return outputNumber;
+        }
 
         static void Main(string[] args)
         {
