@@ -104,7 +104,7 @@ namespace Methodenauswahl
 
         public static int[] ArrayXOR(int[] numbers1, int[] numbers2)
         {
-            int[] uniqueNumbers;
+            int[] uniqueNumbers = new int[numbers1.Length+numbers2.Length];
             //TODO
             return uniqueNumbers;
         }
@@ -144,6 +144,10 @@ namespace Methodenauswahl
 
             do
             {
+                string inputText;
+                int num1, num2, num3, amount;
+                int[] returnedIntegerArray;
+
                 Console.WriteLine("Methodenauswahl");
                 Console.WriteLine("===============");
                 Console.WriteLine("(1) SwapNumbers");
@@ -161,39 +165,60 @@ namespace Methodenauswahl
                         break;
                     case "1":
                         Console.Write("Bitte 1. Nummer eingeben: ");
-                        int num1 = Convert.ToInt32(Console.ReadLine());
+                        num1 = Convert.ToInt32(Console.ReadLine());
                         Console.Write("Bitte 2. Nummer eingeben: ");
-                        int num2 = Convert.ToInt32(Console.ReadLine());
+                        num2 = Convert.ToInt32(Console.ReadLine());
                         SwapNumbers(ref num1,ref num2);
                         Console.WriteLine("Neuer Wert von Nummer 1: {0}", num1);
                         Console.WriteLine("Neuer Wert von Nummer 2: {0}", num2);
                         break;
                     case "2":
                         Console.Write("Bitte 1. Nummer eingeben: ");
-                        int numb1 = Convert.ToInt32(Console.ReadLine());
+                        num1 = Convert.ToInt32(Console.ReadLine());
                         Console.Write("Bitte 2. Nummer eingeben: ");
-                        int numb2 = Convert.ToInt32(Console.ReadLine());
+                        num2 = Convert.ToInt32(Console.ReadLine());
                         Console.Write("Bitte 3. Nummer eingeben: ");
-                        int numb3 = Convert.ToInt32(Console.ReadLine());
-                        OrderNumbers(ref numb1, ref numb2, ref numb3);
-                        Console.WriteLine("Die kleinste Zahl ist: {0}", numb1);
-                        Console.WriteLine("Die mittlere Zahl ist: {0}", numb2);
-                        Console.WriteLine("Die groesste Zahl ist: {0}", numb3);
+                        num3 = Convert.ToInt32(Console.ReadLine());
+                        OrderNumbers(ref num1, ref num2, ref num3);
+                        Console.WriteLine("Die kleinste Zahl ist: {0}", num1);
+                        Console.WriteLine("Die mittlere Zahl ist: {0}", num2);
+                        Console.WriteLine("Die größte Zahl ist: {0}", num3);
                         break;
                     case "3":
                         Console.Write("Wie viele Zahlen?: ");
-                        int amount = Convert.ToInt32(Console.ReadLine());
+                        amount = Convert.ToInt32(Console.ReadLine());
                         CalcMinMax(ReadIntArray(amount),out int highest,out int smallest);
-                        Console.WriteLine("Die groesste Zahl ist: {0}", highest);
+                        Console.WriteLine("Die größte Zahl ist: {0}", highest);
                         Console.WriteLine("Die kleinste Zahl ist: {0}", smallest);
                         break;
                     case "4":
+                        Console.Write("Bitte Text/Nummer eingeben: ");
+                        inputText = Console.ReadLine();
+                        long extractedNumber = ReplaceLetters(inputText);
+                        Console.WriteLine("Die Nummer lautet: {0}", extractedNumber);
                         break;
                     case "5":
+                        Console.Write("Wie lang soll das erste Array sein: ");
+                        num1 = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Wie lang soll das zweite Array sein: ");
+                        num2 = Convert.ToInt32(Console.ReadLine());
+                        returnedIntegerArray = ArrayXOR(ReadIntArray(num1),ReadIntArray(num2));
+                        for (int i = 0; i < returnedIntegerArray.Length; i++)
+                        {
+                            Console.WriteLine("Index {0} = {1}",i,returnedIntegerArray[i]);
+                        }
                         break;
                     case "6":
+                        Console.Write("Bitte Text eingeben: ");
+                        inputText = Console.ReadLine();
+                        Console.Write("Ab welchem Index wollen Sie Text ausschneiden: ");
+                        num1 = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Wieviele Zeichen sollen ausgeschnitten werden: ");
+                        num2 = Convert.ToInt32(Console.ReadLine());
+                        Console.WriteLine("Der Text lautet: {0}", Substring(inputText,num1,num2));
                         break;
                     default:
+                        Console.WriteLine("Eingabe ungültig.");
                         break;
                 }
 
