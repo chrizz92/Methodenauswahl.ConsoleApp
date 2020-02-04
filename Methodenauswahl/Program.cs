@@ -78,6 +78,11 @@ namespace Methodenauswahl
             }
         }
 
+        /// <summary>
+        /// Takes a string and builds a number out of it. If a char is not a digit, it will be replaced with zero
+        /// </summary>
+        /// <param name="inputNumber"></param>
+        /// <returns>Number from the given string</returns>
         public static long ReplaceLetters(string inputNumber)
         {
             long outputNumber = 0;
@@ -88,13 +93,49 @@ namespace Methodenauswahl
                 {
                     outputNumber += Convert.ToInt32(inputNumber[i].ToString());
                 }
-                else if((inputNumber[i] >= 'a' && inputNumber[i] <= 'z')||(inputNumber[i] >= 'A' && inputNumber[i] <= 'Z'))
-                {
-                    outputNumber *= 10;
-                }
+                outputNumber *= 10;
             }
 
+            outputNumber /= 10;
+
             return outputNumber;
+        }
+
+
+        public static int[] ArrayXOR(int[] numbers1, int[] numbers2)
+        {
+            int[] uniqueNumbers;
+            //TODO
+            return uniqueNumbers;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="inputString"></param>
+        /// <param name="startingIndex"></param>
+        /// <param name="substringLength"></param>
+        /// <returns></returns>
+        public static string Substring(string inputString, int startingIndex, int substringLength)
+        {
+            string substring="";
+            if(startingIndex < 0 || startingIndex > inputString.Length-1)
+            {
+                //do nothing if indexOutOfRange or starts from behind
+            }
+            else
+            {
+                if(startingIndex+substringLength > inputString.Length)
+                {
+                    substringLength = inputString.Length - startingIndex;
+                }
+
+                for (int i = 0; i < substringLength; i++)
+                {
+                    substring += inputString[startingIndex + i];
+                }
+            }
+            return substring;
         }
 
         static void Main(string[] args)
@@ -119,10 +160,32 @@ namespace Methodenauswahl
                     case "0":
                         break;
                     case "1":
+                        Console.Write("Bitte 1. Nummer eingeben: ");
+                        int num1 = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Bitte 2. Nummer eingeben: ");
+                        int num2 = Convert.ToInt32(Console.ReadLine());
+                        SwapNumbers(ref num1,ref num2);
+                        Console.WriteLine("Neuer Wert von Nummer 1: {0}", num1);
+                        Console.WriteLine("Neuer Wert von Nummer 2: {0}", num2);
                         break;
                     case "2":
+                        Console.Write("Bitte 1. Nummer eingeben: ");
+                        int numb1 = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Bitte 2. Nummer eingeben: ");
+                        int numb2 = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Bitte 3. Nummer eingeben: ");
+                        int numb3 = Convert.ToInt32(Console.ReadLine());
+                        OrderNumbers(ref numb1, ref numb2, ref numb3);
+                        Console.WriteLine("Die kleinste Zahl ist: {0}", numb1);
+                        Console.WriteLine("Die mittlere Zahl ist: {0}", numb2);
+                        Console.WriteLine("Die groesste Zahl ist: {0}", numb3);
                         break;
                     case "3":
+                        Console.Write("Wie viele Zahlen?: ");
+                        int amount = Convert.ToInt32(Console.ReadLine());
+                        CalcMinMax(ReadIntArray(amount),out int highest,out int smallest);
+                        Console.WriteLine("Die groesste Zahl ist: {0}", highest);
+                        Console.WriteLine("Die kleinste Zahl ist: {0}", smallest);
                         break;
                     case "4":
                         break;
