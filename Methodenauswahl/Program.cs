@@ -20,11 +20,27 @@ namespace Methodenauswahl
             return numbers;
         }
 
+        /// <summary>
+        /// Takes two integer-references and swaps their values
+        /// </summary>
+        /// <param name="number1"></param>
+        /// <param name="number2"></param>
+        public static void SwapNumbers(ref int number1, ref int number2)
+        {
+            int temp = number1;
+            number1 = number2;
+            number2 = temp;
+        }
+
+        public static void OrderNumbers(ref int number1, ref int number2, ref int number3)
+        {
+
+        }
+
+
         static void Main(string[] args)
         {
             string methodSelector;
-
-
 
             do
             {
@@ -58,6 +74,7 @@ namespace Methodenauswahl
                     default:
                         break;
                 }
+
             } while (methodSelector != "0");
             
         }
