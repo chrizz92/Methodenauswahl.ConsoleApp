@@ -55,7 +55,7 @@ namespace Methodenauswahl
         }
 
         /// <summary>
-        /// Takes an integer-Array and creates two out-integers one with the highest and one with the smallest Value
+        /// Takes an integer-Array and creates two out-integers one with the highest and one with the smallest value
         /// </summary>
         /// <param name="arrayToLookUp"></param>
         /// <param name="highestValue"></param>
@@ -101,7 +101,12 @@ namespace Methodenauswahl
             return outputNumber;
         }
 
-
+        /// <summary>
+        /// Takes two integer-Arrays and builds a new one with the unique values of the given ones
+        /// </summary>
+        /// <param name="numbers1"></param>
+        /// <param name="numbers2"></param>
+        /// <returns>The builded integer-Array</returns>
         public static int[] ArrayXOR(int[] numbers1, int[] numbers2)
         {
             bool isUnique;
@@ -110,7 +115,7 @@ namespace Methodenauswahl
             numbers1.CopyTo(temp, 0);
             numbers2.CopyTo(temp, numbers1.Length);
 
-            //Check and count unique Numbers
+            //Count unique Numbers
             for (int i = 0; i < temp.Length; i++)
             {
                 isUnique = true;
@@ -122,8 +127,7 @@ namespace Methodenauswahl
                         {
                             isUnique = false;
                         }
-                    }
-                    
+                    }                  
                 }
 
                 if (isUnique)
@@ -136,18 +140,39 @@ namespace Methodenauswahl
 
             //Add unique Numbers to the array
             uniqueCounter = 0;
-            
+            for (int i = 0; i < temp.Length; i++)
+            {
+                isUnique = true;
+                for (int j = 0; j < temp.Length; j++)
+                {
+                    if (i != j)
+                    {
+                        if (temp[j] == temp[i])
+                        {
+                            isUnique = false;
+                        }
+                    }
+                }
 
+                if (isUnique)
+                {
+                    uniqueNumbers[uniqueCounter] = temp[i];
+                    uniqueCounter++;
+                }
+            }
             return uniqueNumbers;
         }
 
         /// <summary>
-        /// 
+        /// Takes a string and two integers. Builds a substring out of the give one. 
+        /// The first integer defines at which index from the original one the substring will start.
+        /// The second integer defines the length of the substring. 
+        /// If the length goes over the end of the given string, the substring will end at the last index from the original one.
         /// </summary>
         /// <param name="inputString"></param>
         /// <param name="startingIndex"></param>
         /// <param name="substringLength"></param>
-        /// <returns></returns>
+        /// <returns>If the startingIndex is valid the builded Substring, else an empty string</returns>
         public static string Substring(string inputString, int startingIndex, int substringLength)
         {
             string substring="";
