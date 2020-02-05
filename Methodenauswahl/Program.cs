@@ -201,11 +201,12 @@ namespace Methodenauswahl
 
             do
             {
-                Console.Clear();
+                
                 string inputText;
                 int num1, num2, num3, amount;
                 int[] returnedIntegerArray1, returnedIntegerArray2, returnedIntegerArray3;
-
+                
+                Console.Clear();
                 Console.WriteLine("Methodenauswahl");
                 Console.WriteLine("===============");
                 Console.WriteLine("(1) SwapNumbers");
@@ -226,7 +227,7 @@ namespace Methodenauswahl
                         num1 = Convert.ToInt32(Console.ReadLine());
                         Console.Write("Bitte 2. Nummer eingeben: ");
                         num2 = Convert.ToInt32(Console.ReadLine());
-                        SwapNumbers(ref num1,ref num2);
+                        SwapNumbers(ref num1, ref num2);
                         Console.WriteLine("Neuer Wert von Nummer 1: {0}", num1);
                         Console.WriteLine("Neuer Wert von Nummer 2: {0}", num2);
                         Console.Write("Zum Fortfahren beliebige Taste drücken ...");
@@ -249,7 +250,7 @@ namespace Methodenauswahl
                     case "3":
                         Console.Write("Wie viele Zahlen?: ");
                         amount = Convert.ToInt32(Console.ReadLine());
-                        CalcMinMax(ReadIntArray(amount),out int highest,out int smallest);
+                        CalcMinMax(ReadIntArray(amount), out int highest, out int smallest);
                         Console.WriteLine("Die größte Zahl ist: {0}", highest);
                         Console.WriteLine("Die kleinste Zahl ist: {0}", smallest);
                         Console.Write("Zum Fortfahren beliebige Taste drücken ...");
@@ -270,10 +271,11 @@ namespace Methodenauswahl
                         Console.Write("Wie lang soll das zweite Array sein: ");
                         num2 = Convert.ToInt32(Console.ReadLine());
                         returnedIntegerArray2 = ReadIntArray(num2);
-                        returnedIntegerArray3 = ArrayXOR(returnedIntegerArray1,returnedIntegerArray2);
+                        returnedIntegerArray3 = ArrayXOR(returnedIntegerArray1, returnedIntegerArray2);
+                        Console.WriteLine("Ergebnisarray:");
                         for (int i = 0; i < returnedIntegerArray3.Length; i++)
                         {
-                            Console.WriteLine("Index {0} = {1}",i,returnedIntegerArray3[i]);
+                            Console.WriteLine("Index {0} = {1}", i, returnedIntegerArray3[i]);
                         }
                         Console.Write("Zum Fortfahren beliebige Taste drücken ...");
                         Console.ReadKey();
@@ -285,7 +287,7 @@ namespace Methodenauswahl
                         num1 = Convert.ToInt32(Console.ReadLine());
                         Console.Write("Wieviele Zeichen sollen ausgeschnitten werden: ");
                         num2 = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Der Text lautet: {0}", Substring(inputText,num1,num2));
+                        Console.WriteLine("Der Text lautet: {0}", Substring(inputText, num1, num2));
                         Console.Write("Zum Fortfahren beliebige Taste drücken ...");
                         Console.ReadKey();
                         break;
@@ -296,8 +298,7 @@ namespace Methodenauswahl
                         break;
                 }
 
-            } while (methodSelector != "0");
-            
+            } while (methodSelector != "0");   
         }
     }
 }
